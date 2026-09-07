@@ -2,6 +2,7 @@ import Page from '@/components/Page';
 import Feature from '@/components/Feature';
 import Grid from '@/components/Grid';
 import Teaser from '@/components/Teaser';
+import FilteredPosts from '@/components/FilteredPosts';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NavLink from '@/components/NavLink';
@@ -16,6 +17,7 @@ export const getStoryblokApi = storyblokInit({
 		feature: Feature,
 		grid: Grid,
 		teaser: Teaser,
+		'filtered-posts': FilteredPosts,
 		header: Header,
 		footer: Footer,
 		'nav-link': NavLink,
