@@ -6,6 +6,7 @@ import FilteredPosts from '@/components/FilteredPosts';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NavLink from '@/components/NavLink';
+import Author from '@/components/Author';
 
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
@@ -21,6 +22,7 @@ export const getStoryblokApi = storyblokInit({
 		header: Header,
 		footer: Footer,
 		'nav-link': NavLink,
+		author: Author,
 	},
 	apiOptions: {
 		/** Set the correct region for your space. Learn more: https://www.storyblok.com/docs/packages/storyblok-js#example-region-parameter */
