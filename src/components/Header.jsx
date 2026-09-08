@@ -6,14 +6,14 @@ import {
 export default function Header({ blok }) {
 	return (
 		<header
-			className="pt-1 flex justify-between px-4"
+			className="sticky top-0 z-40 bg-white border-b border-slate-100 px-6 flex items-stretch justify-between h-20"
 			{...storyblokEditable(blok)}
 		>
-			<h2 className="text-3xl font-bold uppercase capitalize">
+			<h2 className="text-3xl font-bold tracking-tight text-slate-900 uppercase self-center">
 				{blok.headerTitle}
 			</h2>
-			<nav className="flex items-center">
-				<ul className="flex gap-4">
+			<nav className="flex h-full">
+				<ul className="flex items-stretch gap-8 h-full">
 					{blok.navigation?.map((navBlok) => (
 						<StoryblokServerComponent blok={navBlok} key={navBlok._uid} />
 					))}
