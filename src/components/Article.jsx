@@ -12,6 +12,8 @@ export default function Article({blok}) {
         </Link>
       </p>
 
+      <p>{blok.category}</p> 
+
       <h1>{blok.title}</h1>
 
       <p>{blok.summary}</p>
