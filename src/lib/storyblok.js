@@ -9,6 +9,8 @@ import NavLink from '@/components/NavLink';
 import Author from '@/components/Author';
 
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
+import Article from '@/components/Article';
+import ArticleList from '@/components/ArticleList';
 
 export const getStoryblokApi = storyblokInit({
 	accessToken: process.env.STORYBLOK_DELIVERY_API_TOKEN,
@@ -18,6 +20,8 @@ export const getStoryblokApi = storyblokInit({
 		feature: Feature,
 		grid: Grid,
 		teaser: Teaser,
+		article: Article,
+		"article-list": ArticleList,
 		'filtered-posts': FilteredPosts,
 		header: Header,
 		footer: Footer,

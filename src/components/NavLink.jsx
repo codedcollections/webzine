@@ -27,18 +27,18 @@ export default function NavLink({ blok }) {
 			{href ? (
 				<Link
 					href={href}
-					className="flex items-center h-full text-sm font-medium text-slate-600 border-b-2 border-transparent hover:text-blue-600 hover:border-blue-600 transition-colors uppercase"
+					className="relative flex items-center h-full text-sm font-medium text-gray-600 hover:text-blue-400 transition-colors uppercase after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-blue-400 after:opacity-0 hover:after:opacity-100 after:transition-opacity"
 				>
 					{blok.label}
 				</Link>
 			) : (
-				<span className="flex items-center h-full text-sm font-medium text-slate-600 cursor-default uppercase">
+				<span className="flex items-center h-full text-sm font-medium text-gray-600 cursor-default uppercase">
 					{blok.label}
 				</span>
 			)}
 
 			{hasChildren && (
-				<ul className="invisible opacity-0 -translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 absolute top-full left-0 w-56 bg-white rounded-b-lg border border-slate-100 px-4 py-4 space-y-2 origin-top transition-all duration-150 ease-out z-50">
+				<ul className="invisible opacity-0 -translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 absolute top-full left-0 w-56 bg-white rounded-b-lg border border-gray-100 px-4 py-4 space-y-2 origin-top transition-all duration-150 ease-out z-50">
 					{blok.children.map((child) => (
 						<StoryblokServerComponent blok={child} key={child._uid} />
 					))}

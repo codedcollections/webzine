@@ -6,10 +6,10 @@ import {
 export default function Header({ blok }) {
 	return (
 		<header
-			className="sticky top-0 z-40 bg-white border-b border-slate-100 px-6 flex items-stretch justify-between h-20"
+			className="sticky top-0 z-40 bg-white border-b border-gray-200 px-4 flex items-stretch justify-between h-20"
 			{...storyblokEditable(blok)}
 		>
-			<h2 className="text-3xl font-bold tracking-tight text-slate-900 uppercase self-center">
+			<h2 className="text-3xl font-bold tracking-tight text-gray-900 uppercase self-center">
 				{blok.headerTitle}
 			</h2>
 			<nav className="flex h-full">
