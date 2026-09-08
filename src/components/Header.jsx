@@ -6,7 +6,7 @@ import {
 export default function Header({ blok }) {
 	return (
 		<header
-			className="pt-1 flex justify-between px-4"
+			className="pt-1 pb-3 flex justify-between px-4 border-b border-gray-200"
 			{...storyblokEditable(blok)}
 		>
 			<h2 className="text-3xl font-bold uppercase capitalize">
