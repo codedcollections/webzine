@@ -6,7 +6,7 @@ export async function generateMetadata() {
   const storyblokApi = getStoryblokApi()
 
   const {data} = await storyblokApi.get("cdn/stories/articles", {
-    version: "draft"
+    version: "published"
   })
 
   const content = data.story.content
@@ -23,7 +23,7 @@ export default async function ArticlesPage() {
   try {
     const storyblokApi = getStoryblokApi()
     const {data} = await storyblokApi.get("cdn/stories/articles", {
-      version: "draft"
+      version: "published"
     })
     story = data.story
   } catch{

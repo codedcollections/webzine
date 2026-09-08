@@ -22,7 +22,7 @@ export async function generateStaticParams() {
   const storyblokApi = getStoryblokApi()
 
   const { data } = await storyblokApi.getStories({
-    version: "draft",
+    version: "published",
     starts_with: "articles/",
     content_type: "article"
   })
@@ -39,7 +39,7 @@ export default async function ArticlePostPage ({params}) {
   let story
   try {
     const {data} = await storyblokApi.get(`cdn/stories/articles/${slug}`, {
-      version: "draft",
+      version: "published",
       resolve_relations: "article.author"
     })
     story = data.story
