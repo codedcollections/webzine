@@ -7,17 +7,29 @@ export async function generateMetadata({params}) {
   const storyblokApi = getStoryblokApi()
 
   const {data} = await storyblokApi.get(`cdn/stories/articles/${slug}`, {
-    version: "draft"
+    version: "published"
   })
 
   const story = data.story
-
-  console.log("Story: ", story)
 
   return{
     title: story.content.title,
     description: story.content.summary
   }
+}
+
+export async function generateStaticParams() {
+  const storyblokApi = getStoryblokApi()
+
+  const { data } = await storyblokApi.getStories({
+    version: "draft",
+    starts_with: "articles/",
+    content_type: "article"
+  })
+
+  return data.stories.map((story) => ({
+    slug: story.slug
+  }))
 }
 
 export default async function ArticlePostPage ({params}) {
