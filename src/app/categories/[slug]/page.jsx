@@ -27,8 +27,10 @@ export async function generateMetadata({ params }) {
 	const story = data.story;
 
 	return {
-		title: story.content.title,
-		description: `Artiklar inom kategorin ${story.content.title}`,
+		title: story.content.seo_title || `${story.content.title} – Artiklar`,
+		description:
+			story.content.seo_description ||
+			`Läs alla artiklar i kategorin ${story.content.title}.`,
 	};
 }
 
