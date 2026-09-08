@@ -13,7 +13,7 @@ export async function generateMetadata() {
 
   return{
     title: content.seo_title || data.story.name,
-    description: "Hejhej"
+    description: content.seo_description || "En sida full med artiklar"
   }
 }
 
