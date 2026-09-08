@@ -7,7 +7,7 @@ export default function Article({blok}) {
   return(
     <article {...storyblokEditable(blok)}>
       <p>
-        <Link href="/article">
+        <Link href="/articles">
          Tillbaka till Artikel listan
         </Link>
       </p>
@@ -21,7 +21,11 @@ export default function Article({blok}) {
         dangerouslySetInnerHTML={{__html: renderedContent}}
       />
 
-      <p>{blok.author}</p>
+      {(blok.author ?? []).map((author, index) => (
+        <Link key={index} href={`/authors/${author.slug}`}>
+          {author.content?.name ?? author.name}
+        </Link>
+      ))}
 
     </article>
   )
