@@ -1,6 +1,6 @@
 import { getStoryblokApi } from "@/lib/storyblok";
 
-const siteUrl = process.env.SITE_URL ?? "https://example.com";
+const siteUrl = process.env.SITE_URL ?? "https://localhost:3000";
 
 export default async function sitemap() {
   const storyblokApi = getStoryblokApi();
