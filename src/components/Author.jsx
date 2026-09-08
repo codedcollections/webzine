@@ -2,15 +2,20 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 import { getStoryblokApi } from '@/lib/storyblok';
 import Link from 'next/link';
 
-export default async function Author({ blok, uuid }) {
+export default async function Author({ blok }) {
 	const storyblokApi = getStoryblokApi();
 
 	const { data: articlesData } = await storyblokApi.getStories({
 		version: 'published',
 		starts_with: 'articles/',
 		content_type: 'article',
-		filter_query: { author: { in: blok.uuid } },
+		filter_query: {
+			author: {
+				in: blok.storyUuid,
+			},
+		},
 	});
+	console.log('BLOK:', blok);
 
 	const articles = articlesData.stories;
 
@@ -27,7 +32,7 @@ export default async function Author({ blok, uuid }) {
 						src={blok.photo.filename}
 						alt={blok.name}
 						width={200}
-						height={200}
+						height={150}
 					/>
 				)}
 			</div>

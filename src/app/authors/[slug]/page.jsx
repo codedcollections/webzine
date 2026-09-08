@@ -16,5 +16,12 @@ export default async function AuthorPage({ params }) {
 		notFound();
 	}
 
-	return <StoryblokServerComponent blok={story.content} />;
+	return (
+		<StoryblokServerComponent
+			blok={{
+				...story.content,
+				storyUuid: story.uuid,
+			}}
+		/>
+	);
 }
