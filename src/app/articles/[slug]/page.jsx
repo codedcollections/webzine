@@ -9,7 +9,8 @@ export default async function ArticlePostPage ({params}) {
   let story
   try {
     const {data} = await storyblokApi.get(`cdn/stories/articles/${slug}`, {
-      version: "draft"
+      version: "draft",
+      resolve_relations: "article.author"
     })
     story = data.story
   } catch{
