@@ -38,9 +38,21 @@ export default async function CategoryPage({ params }) {
 	const { slug } = await params;
 	const storyblokApi = getStoryblokApi();
 
+	const category = await storyblokApi.get(`cdn/stories/categories/${slug}`, {
+		version: 'published',
+	});
+	const categoryTitle = category.data.story.content.title;
+
 	const { data } = await storyblokApi.get('cdn/stories/category-page', {
 		version: 'published',
 	});
 
-	return <StoryblokServerComponent blok={data.story.content} slug={slug} />;
+	return (
+		<>
+			<div className="max-w-3xl mx-auto px-4 pt-10">
+				<h1 className="text-3xl font-bold text-slate-900">{categoryTitle}</h1>
+			</div>
+			<StoryblokServerComponent blok={data.story.content} slug={slug} />
+		</>
+	);
 }
