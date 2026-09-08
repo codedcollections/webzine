@@ -3,7 +3,10 @@ import { storyblokEditable } from '@storyblok/react/rsc';
 
 export default function Footer({ blok }) {
 	return (
-		<footer className="flex" {...storyblokEditable(blok)}>
+		<footer
+			className="mt-5 mb-2 rounded-lg flex justify-between bg-gradient-to-r from-blue-100/70 to-pink-100/70"
+			{...storyblokEditable(blok)}
+		>
 			{blok.footerIcon?.filename && (
 				<Image
 					src={blok.footerIcon?.filename}

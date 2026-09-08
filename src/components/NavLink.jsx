@@ -6,7 +6,7 @@ export default function NavLink({ blok }) {
 	return (
 		<li {...storyblokEditable(blok)}>
 			<a
-				className="hover:text-blue-400 hover:border-b hover:border-blue-400"
+				className="uppercase relative hover:text-blue-400 after:absolute after:-bottom-5 after:left-0 after:h-0.5 after:w-full after:bg-blue-400 after:opacity-0 hover:after:opacity-100"
 				href={url}
 			>
 				{blok.label}
