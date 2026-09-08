@@ -24,18 +24,18 @@ export default async function FilteredPosts({ blok, slug }) {
 			className="max-w-3xl mx-auto px-4 py-10"
 		>
 			{blok.heading && (
-				<h2 className="text-2xl font-bold text-slate-900 mb-3">
+				<h2 className="text-2xl font-bold text-gray-900 mb-3">
 					{blok.heading}
 				</h2>
 			)}
 			<div className="w-10 h-1 bg-blue-600 rounded-full mb-6" />
 
 			{posts.length === 0 ? (
-				<p className="text-slate-500">
+				<p className="text-gray-500">
 					{blok.empty_text || 'Inga artiklar ännu.'}
 				</p>
 			) : (
-				<ul className="divide-y divide-slate-100">
+				<ul className="divide-y divide-gray-100">
 					{posts.map((post) => {
 						const author = post.content.author?.[0];
 
@@ -49,11 +49,11 @@ export default async function FilteredPosts({ blok, slug }) {
 											{post.content.category?.toUpperCase()}
 										</span>
 
-										<h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+										<h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
 											{post.content.title}
 										</h3>
 
-										<div className="flex items-center gap-4 text-sm text-slate-500 mt-2 mb-3">
+										<div className="flex items-center gap-4 text-sm text-gray-500 mt-2 mb-3">
 											{post.published_at && (
 												<span className="flex items-center gap-1">
 													📅{' '}
@@ -71,7 +71,7 @@ export default async function FilteredPosts({ blok, slug }) {
 										</div>
 
 										{post.content.summary && (
-											<p className="text-slate-600 text-sm line-clamp-2">
+											<p className="text-gray-600 text-sm line-clamp-2">
 												{post.content.summary}
 											</p>
 										)}
