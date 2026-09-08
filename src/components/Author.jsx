@@ -6,7 +6,7 @@ export default async function Author({ blok, uuid }) {
 	const storyblokApi = getStoryblokApi();
 
 	const { data: articlesData } = await storyblokApi.getStories({
-		version: 'draft',
+		version: 'published',
 		starts_with: 'articles/',
 		content_type: 'article',
 		filter_query: { author: { in: blok.uuid } },

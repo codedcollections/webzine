@@ -9,7 +9,7 @@ export default async function AuthorPage({ params }) {
 	let story;
 	try {
 		const { data } = await storyblokApi.get(`cdn/stories/authors/${slug}`, {
-			version: 'draft',
+			version: 'published',
 		});
 		story = data.story;
 	} catch {

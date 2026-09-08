@@ -7,7 +7,7 @@ export default async function HomePage() {
 	try {
 		const storyblokApi = getStoryblokApi();
 		const { data } = await storyblokApi.get('cdn/stories/home', {
-			version: 'draft',
+			version: 'published',
 		});
 		story = data.story;
 	} catch {
