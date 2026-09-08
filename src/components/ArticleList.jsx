@@ -6,7 +6,7 @@ export default async function ArticleList({blok}) {
   const storyblokApi = getStoryblokApi()
 
   const {data} = await storyblokApi.getStories({
-    version: "draft",
+    version: "published",
     starts_with: "articles/",
     content_type: "article",
     resolve_relations: "article.author"
