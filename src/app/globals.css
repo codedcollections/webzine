@@ -20,3 +20,9 @@
 .rich-text p {
   margin-bottom: 1rem;
 }
+
+@layer base {
+  html {
+    overflow-y: scroll;
+  }
+}
