@@ -27,7 +27,7 @@ export default function NavLink({ blok }) {
 			{href ? (
 				<Link
 					href={href}
-					className="relative flex items-center h-full text-sm font-medium text-gray-600 hover:text-blue-400 transition-colors uppercase after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-blue-400 after:opacity-0 hover:after:opacity-100 after:transition-opacity"
+					className="relative flex items-center h-full text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors uppercase after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-blue-600 after:opacity-0 hover:after:opacity-100 after:transition-opacity"
 				>
 					{blok.label}
 				</Link>
