@@ -6,7 +6,7 @@ export async function generateStaticParams() {
 	const storyblokApi = getStoryblokApi();
 
 	const { data } = await storyblokApi.getStories({
-		version: 'draft',
+		version: 'published',
 		starts_with: 'authors/',
 		content_type: 'author',
 	});
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
 	const storyblokApi = getStoryblokApi();
 
 	const { data } = await storyblokApi.get(`cdn/stories/authors/${slug}`, {
-		version: 'draft',
+		version: 'published',
 	});
 
 	const story = data.story;
