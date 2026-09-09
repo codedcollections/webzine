@@ -15,7 +15,6 @@ export default async function Author({ blok }) {
 			},
 		},
 	});
-	console.log('BLOK:', blok);
 
 	const articles = articlesData.stories;
 
