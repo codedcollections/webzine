@@ -20,14 +20,14 @@ export default async function RootLayout({ children }) {
 	const footerBlok = config.footer?.[0];
 
 	return (
-		<StoryblokProvider>
-			{headerBlok && <StoryblokServerComponent blok={headerBlok} />}
-			<html lang="en">
-				<body>
+		<html lang="sv">
+			<body>
+				<StoryblokProvider>
+					{headerBlok && <StoryblokServerComponent blok={headerBlok} />}
 					<div>{children}</div>
-				</body>
-			</html>
-			{footerBlok && <StoryblokServerComponent blok={footerBlok} />}
-		</StoryblokProvider>
+					{footerBlok && <StoryblokServerComponent blok={footerBlok} />}
+				</StoryblokProvider>
+			</body>
+		</html>
 	);
 }
