@@ -1,5 +1,5 @@
 import { getStoryblokApi } from "@/lib/storyblok";
-import { storyblokEditable } from "@storyblok/react";
+import { storyblokEditable } from '@storyblok/react/rsc';
 import Link from "next/link";
 
 export default async function ArticleList({blok}) {
