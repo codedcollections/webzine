@@ -26,9 +26,8 @@ export default function Footer({ blok }) {
 			</div>
 			<div className="flex gap-3">
 				<input
-					type="text"
+					type="email"
 					name={blok.footerPlaceholder}
-					id=""
 					placeholder={blok.footerPlaceholder}
 					className=" rounded-md bg-white px-4 py-3 text-gray-800 shadow-sm outline-none placeholder:text-gray-300 focus:ring-2 focus:ring-pink-100"
 				/>
