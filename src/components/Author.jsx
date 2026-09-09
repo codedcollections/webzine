@@ -20,12 +20,18 @@ export default async function Author({ blok }) {
 	const articles = articlesData.stories;
 
 	return (
-		<article {...storyblokEditable(blok)}>
-			<div className="grid grid-cols-2 place-items-center">
+		<article
+			{...storyblokEditable(blok)}
+			className="max-w-3xl mx-auto px-4 py-12"
+		>
+			<div className="grid grid-cols-2 place-items-center gap-6 mb-12 pb-10 border-b border-gray-100">
 				<div className="flex flex-col items-center gap-3">
-					<h2 className="flex text-2xl">{blok.name}</h2>
-					<p className="flex text-center">{blok.bio}</p>
+					<h2 className="flex text-2xl font-bold text-gray-900">{blok.name}</h2>
+					<p className="flex text-center text-gray-600 leading-relaxed">
+						{blok.bio}
+					</p>
 				</div>
+
 				{blok.photo?.filename && (
 					<img
 						className="rounded-md shadow-[0_6px_20px_rgba(0,0,0,0.12)]"
@@ -37,15 +43,20 @@ export default async function Author({ blok }) {
 				)}
 			</div>
 
-			<h2 className="flex text-3xl font-bold mb-3">Inlägg av {blok.name}</h2>
+			<h2 className="flex text-3xl font-bold text-gray-900 mb-6">
+				Inlägg av {blok.name}
+			</h2>
 
 			{articles.length === 0 ? (
-				<p>Inga inlägg ännu.</p>
+				<p className="text-gray-500">Inga inlägg ännu.</p>
 			) : (
-				<ul className="flex flex-col gap-4 mb-4">
+				<ul className="flex flex-col gap-4 mb-8 divide-y divide-gray-100">
 					{articles.map((article) => (
-						<li key={article.uuid}>
-							<Link href={`/${article.full_slug}`}>
+						<li key={article.uuid} className="pt-4 first:pt-0">
+							<Link
+								href={`/${article.full_slug}`}
+								className="text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors"
+							>
 								{article.content.title}
 							</Link>
 						</li>
@@ -54,7 +65,12 @@ export default async function Author({ blok }) {
 			)}
 
 			<p>
-				<Link href="/">← Tillbaka till startsidan</Link>
+				<Link
+					href="/"
+					className="text-sm font-medium text-gray-500 hover:text-blue-600 transition-colors"
+				>
+					← Tillbaka till startsidan
+				</Link>
 			</p>
 		</article>
 	);
