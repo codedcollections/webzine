@@ -7,6 +7,7 @@ import Author from '@/components/Author';
 import Article from '@/components/Article';
 import ArticleList from '@/components/ArticleList';
 import Hero from '@/components/Hero';
+import Grid from '@/components/Grid';
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
 export const getStoryblokApi = storyblokInit({
@@ -15,13 +16,14 @@ export const getStoryblokApi = storyblokInit({
 	components: {
 		page: Page,
 		article: Article,
-		"article-list": ArticleList,
+		'article-list': ArticleList,
 		'filtered-posts': FilteredPosts,
 		header: Header,
 		footer: Footer,
 		'nav-link': NavLink,
 		author: Author,
 		hero: Hero,
+		grid: Grid,
 	},
 	apiOptions: {
 		/** Set the correct region for your space. Learn more: https://www.storyblok.com/docs/packages/storyblok-js#example-region-parameter */
