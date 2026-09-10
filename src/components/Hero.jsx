@@ -26,9 +26,9 @@ export default async function Hero({ blok }) {
             className="bg-linear-to-b from-blue-50 via-white to-white border-b border-gray-100"
         >
             {blok.heading && (
-                <h1 className="text-sm font-semibold text-gray-400 uppercase tracking-wide text-center pt-16 mb-6 px-4">
+                <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wide text-center pt-16 mb-6 px-4">
                     {blok.heading}
-                </h1>
+                </h2>
             )}
 
             <Link
@@ -42,9 +42,9 @@ export default async function Hero({ blok }) {
                         {post.content.category?.toUpperCase()}
                     </span>
 
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-5 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-5 group-hover:text-blue-600 transition-colors">
                         {post.content.title}
-                    </h2>
+                    </h3>
 
                     {post.content.summary && (
                         <p className="text-lg text-gray-600 leading-relaxed max-w-xl mx-auto mb-6">

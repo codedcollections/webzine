@@ -1,47 +1,53 @@
-import { renderRichText, storyblokEditable } from '@storyblok/react';
+import { renderRichText, storyblokEditable } from '@storyblok/react/rsc';
+import { getCategoryStyle } from '@/lib/categoryStyles';
 import Link from 'next/link';
 
 export default function Article({ blok }) {
 	const renderedContent = renderRichText(blok.content);
 
 	return (
-		<article
-			{...storyblokEditable(blok)}
-			className="max-w-3xl mx-auto my-10 px-8 py-10 bg-slate-50 border border-slate-200 rounded-xl shadow-sm"
-		>
-			<p>
-				<Link
-					href="/articles"
-					className="text-sm text-slate-500 hover:text-blue-600"
-				>
-					Tillbaka till Artikel listan
-				</Link>
-			</p>
-
-			<p className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 mt-6">
-				{blok.category?.toUpperCase()}
-			</p>
-
-			<h1 className="text-3xl font-bold text-slate-900 mt-3">{blok.title}</h1>
-
-			<p className="text-slate-600 text-base mt-2 mb-6">{blok.summary}</p>
-
-			<div
-				className="rich-text mb-8 text-slate-700"
-				dangerouslySetInnerHTML={{ __html: renderedContent }}
-			/>
-
-			<div className="flex items-center gap-3 mt-6 px-4 py-3 bg-slate-100 border-l-4 border-blue-600 rounded-md text-slate-700">
-				{(blok.author ?? []).map((author) => (
+		<div className="max-w-3xl mx-auto px-4 py-10">
+			<article
+				{...storyblokEditable(blok)}
+				className="bg-gray-50 border border-gray-100 rounded-2xl p-8 md:p-10"
+			>
+				<p className='mb-6'>
 					<Link
-						key={author.uuid}
-						href={`/authors/${author.slug}`}
-						className="italic font-semibold hover:text-blue-600"
+						href="/articles"
+						className="text-sm font-medium text-gray-500 hover:text-blue-600 transition-colors"
 					>
-						{author.content?.name ?? author.name}
+						← Tillbaka till artikellistan
 					</Link>
-				))}
-			</div>
-		</article>
+				</p>
+
+				<span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-4 ${getCategoryStyle(blok.category)}`}>
+					{blok.category?.toUpperCase()}
+				</span>
+
+				<h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-3">{blok.title}</h1>
+
+				<p className="text-lg text-gray-600 mb-8">{blok.summary}</p>
+
+				<div
+					className="rich-text mb-10 text-gray-700"
+					dangerouslySetInnerHTML={{ __html: renderedContent }}
+				/>
+
+				{(blok.author ?? []).length > 0 && (
+					<div className="flex items-center gap-2 pt-6 border-t border-gray-200 text-sm text-gray-500">
+						<span>Skriven av</span>
+						{blok.author.map((author) => (
+							<Link
+								key={author.uuid}
+								href={`/authors/${author.slug}`}
+								className="font-semibold text-gray-900 hover:text-blue-600 transition-colors"
+							>
+								{author.content?.name ?? author.name}
+							</Link>
+						))}
+					</div>
+				)}
+			</article>
+		</div>
 	);
 }
