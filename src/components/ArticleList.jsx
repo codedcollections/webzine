@@ -1,73 +1,84 @@
-import { getStoryblokApi } from "@/lib/storyblok";
-import { storyblokEditable } from "@storyblok/react";
-import Link from "next/link";
+import { getStoryblokApi } from '@/lib/storyblok';
+import { getCategoryStyle } from '@/lib/categoryStyles';
+import { storyblokEditable } from '@storyblok/react/rsc';
+import Link from 'next/link';
 
-export default async function ArticleList({blok}) {
-  const storyblokApi = getStoryblokApi()
+export default async function ArticleList({ blok }) {
+	const storyblokApi = getStoryblokApi();
 
-  const {data} = await storyblokApi.getStories({
-    version: "published",
-    starts_with: "articles/",
-    content_type: "article",
-    resolve_relations: "article.author"
-  })
+	const { data } = await storyblokApi.getStories({
+		version: 'published',
+		starts_with: 'articles/',
+		content_type: 'article',
+		resolve_relations: 'article.author',
+	});
 
-  const stories = data.stories
+	const stories = data.stories;
 
-  return(
-    <section {...storyblokEditable(blok)}
-      className="max-w-3xl mx-auto px-4 py-10">
-      {blok.heading && 
-				  <h1 className="m-0 mb-6 text-3xl font-bold text-slate-900">
-            {blok.heading}
-          </h1>
-      }
+	return (
+		<section
+			{...storyblokEditable(blok)}
+			className="max-w-3xl mx-auto px-4 py-10"
+		>
+			{blok.heading && (
+				<h2 className="text-2xl font-bold text-gray-900 mb-3">
+					{blok.heading}
+				</h2>
+			)}
+			<div className="w-10 h-1 bg-blue-600 rounded-full mb-6" />
 
-      <ul className="list-none divide-y divide-slate-100">
-        {stories.length === 0 ? (
-          <p>{blok.empty_text || "Inga Artiklar"}</p>
-        ): (
-          stories.map((story) => {
-            const author = story.content.author?.[0];
+			{stories.length === 0 ? (
+				<p className="text-gray-500">
+					{blok.empty_text || 'Inga artiklar ännu.'}
+				</p>
+			) : (
+				<ul className="divide-y divide-gray-100">
+					{stories.map((story) => {
+						const author = story.content.author?.[0];
 
-            return (
-              <li key={story.uuid} className="border-b border-slate-200 py-6">
-                <Link
-                  href={`/categories/${story.content.category}`}
-                  className="inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 mt-6 uppercase"
-                >
-                  {story.content.category}
-                </Link>
+						return (
+							<li key={story.uuid} className="py-6 first:pt-0">
+								<Link href={`/${story.full_slug}`} className="flex gap-4 group">
+									<div className="flex-1 min-w-0">
+										<span
+											className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-2 ${getCategoryStyle(story.content.category)}`}
+										>
+											{story.content.category?.toUpperCase()}
+										</span>
 
-                <Link href={`/${story.full_slug}`} className="block group">
-                  <h2 className="text-2xl font-bold text-slate-900 group-hover:text-blue-600">
-                  {story.content.title}
-                </h2>
+										<h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+											{story.content.title}
+										</h3>
 
-                <div className="mt-2 flex items-center gap-4 text-sm text-slate-500">
-                  {story.published_at && (
-                    <span>
-                      📅{' '}
-                      {new Date(story.published_at).toLocaleDateString('sv-SE')}
-                    </span>
-                  )}
+										<div className="flex items-center gap-4 text-sm text-gray-500 mt-2 mb-3">
+											{story.published_at && (
+												<span className="flex items-center gap-1">
+													📅{' '}
+													{new Date(story.published_at).toLocaleDateString(
+														'sv-SE',
+													)}
+												</span>
+											)}
 
-                  {author && (
-                    <span>
-                      👤 {author.content?.name ?? author.name}
-                    </span>
-                  )}
-                </div>
+											{author?.content?.name && (
+												<span className="flex items-center gap-1">
+													👤 {author.content.name}
+												</span>
+											)}
+										</div>
 
-                <p className="mt-3 text-slate-600">
-                  {story.content.summary}
-                </p>
-              </Link>
-              </li>
-            );
-          })
-        )}
-      </ul>
-    </section>
-  )
+										{story.content.summary && (
+											<p className="text-gray-600 text-sm line-clamp-2">
+												{story.content.summary}
+											</p>
+										)}
+									</div>
+								</Link>
+							</li>
+						);
+					})}
+				</ul>
+			)}
+		</section>
+	);
 }

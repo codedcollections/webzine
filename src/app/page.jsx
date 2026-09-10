@@ -1,11 +1,11 @@
 import { getStoryblokApi } from '@/lib/storyblok';
 import { StoryblokStory } from '@storyblok/react/rsc';
+import { notFound } from 'next/navigation';
 
-export async function generateMetadata({ params }) {
-	const { slug } = await params;
+export async function generateMetadata() {
 	const storyblokApi = getStoryblokApi();
 
-	const { data } = await storyblokApi.get(`cdn/stories/home`, {
+	const { data } = await storyblokApi.get('cdn/stories/home', {
 		version: 'published',
 	});
 
