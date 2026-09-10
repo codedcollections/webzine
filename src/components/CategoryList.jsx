@@ -8,10 +8,10 @@ const CategoryList = ({ blok }) => (
 		{blok.headline && (
 			<h2 className="text-2xl font-bold text-gray-900 mb-3">{blok.headline}</h2>
 		)}
-		
+
 		<div className="w-10 h-1 bg-blue-600 rounded-full mb-6" />
 
-		<ul className="divide-y divide-gray-100">
+		<ul className="flex flex-col">
 			{blok.categories?.map((nestedBlok) => (
 				<StoryblokServerComponent blok={nestedBlok} key={nestedBlok._uid} />
 			))}
